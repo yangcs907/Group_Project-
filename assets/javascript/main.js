@@ -1,3 +1,21 @@
+var ingredient_1 = $("").val().trim();
+var ingredient_2 = $("").val().trim();
+var ingredient_3 = $("").val().trim();
+var ingredient_4 = $("").val().trim();
+var ingredient_5 = $("").val().trim();
+
+function searchRecipes(ingredients) {
+  var queryURL = ""
+  $.ajax({
+    url: queryURL,
+    method: "GET"
+  }).done(function response) {
+
+
+  }
+}
+
+
 
   // Initialize Firebase
   var config = {
