@@ -35,3 +35,45 @@ $("").on("click", function(event) {
   firebase.initializeApp(config);
 
   var database = firebase.database();
+
+  $("").on("click", function(event) {
+    event.preventDefault();
+    var ingredient_1 = $("").val().trim();
+    var ingredient_2 = $("").val().trim();
+    var ingredient_3 = $("").val().trim();
+    var ingredient_4 = $("").val().trim();
+    var ingredient_5 = $("").val().trim();
+
+    var ingredients = {
+      ingredient_1: ingredient_1,
+      ingredient_2: ingredient_2,
+      ingredient_3: ingredient_3,
+      ingredient_4: ingredient_4,
+      ingredient_5: ingredient_5
+    };
+
+
+    database.ref().push(ingredients);
+
+    console.log(ingredients.ingredient_1);
+    console.log(ingredients.ingredient_2);
+    console.log(ingredients.ingredient_3);
+    console.log(ingredients.ingredient_4);
+    console.log(ingredients.ingredient_5);
+
+
+    });
+
+    dataRef.ref().on("child_added", function(childSnapshot) {
+
+      // Log everything that's coming out of snapshot
+      console.log(childSnapshot.val().ingredient_1);
+      console.log(childSnapshot.val().ingredient_2);
+      console.log(childSnapshot.val().ingredient_3);
+      console.log(childSnapshot.val().ingredient_4);
+      console.log(childSnapshot.val().ingredient_5);
+
+    // Handle the errors
+    }, function(errorObject) {
+      console.log("Errors handled: " + errorObject.code);
+    });
