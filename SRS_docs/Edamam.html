@@ -46,21 +46,35 @@ The response had HTTP status code 401."-->
         event.preventDefault();
 
         // Here we grab the text from the input box
-        var ingredient = $("#ingr-input").val();
+        var ingredient = $("#ingr-input").val().trim();
         
-        var appId = "015a1dc7"
+        var appId = "36c66d3a"
         
-        var appKey = "16bab94aee14b5881f28798e788c26e0—"
+        var appKey = "8be8dd8b6a6f98a5221770fcb1d2f043"
 
         // Here we construct our URL
-        var queryURL = "http://api.edamam.com/search?q=" + ingredient + "&app_id=$" + appId + "&app_key=$" + appKey +"";
+        var queryURL = "https://api.edamam.com/search?q=" + ingredient + "&app_id=$" + appId + "&app_key=$" + appKey + "";
+
+        // https://api.edamam.com/search?app_id=yourappid&app_key=yourappkey&q=butter&diet=low-carb&diet=high-protein
 
         $.ajax({
+          // xhrFields: {cors: false},
           url: queryURL,
           method: "GET"
         }).done(function(response) {
-	    console.log(response);
-	  });
+          console.log(response);
+        });
+
+        // function logResults(json){
+        //   console.log(json);
+        // }
+
+        
+        // $.ajax({
+        //   url: queryURL,
+        //   dataType: "jsonp",
+        //   jsonpCallback: "logResults"
+        // });
 
         // -----------------------------------------------------------------------
 
