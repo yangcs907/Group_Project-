@@ -38,7 +38,7 @@ $("").on("click", function(event) {
 
   $("").on("click", function(event) {
     event.preventDefault();
-    var ingredient_1 = $("").val().trim();
+    var ingredient_1 = $("#employee-name-input").val().trim();
     var ingredient_2 = $("").val().trim();
     var ingredient_3 = $("").val().trim();
     var ingredient_4 = $("").val().trim();
