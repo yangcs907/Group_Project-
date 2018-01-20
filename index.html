@@ -5,8 +5,6 @@
   <meta charset="utf-8">
   <title>In Search of Edamam Response</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-  <script src="jquery-3.2.1.min.js"></script>
-
 </head>
 
 <!--The good news is that the API-call URL, as constructed below, does seem to be correct. It does not yield a
@@ -52,7 +50,7 @@ The response had HTTP status code 401."-->
 
         var appKey = "8be8dd8b6a6f98a5221770fcb1d2f043"
         // Here we construct our URL
-        var queryURL = "https://api.edamam.com/search?q=" + ingredient + "&app_id=" + appId + "&app_key=" + appKey + "";
+        var queryURL = "https://api.edamam.com/search?q=" + ingredient + "&app_id=" + appId + "&app_key=" + appKey + "&from=0&to=1";
         // `https://api.edamam.com/search?q=${req.query.search}&app_id=${APP_ID}&app_key=${API_KEY}`
         // https://api.edamam.com/search?app_id=yourappid&app_key=yourappkey&q=butter&diet=low-carb&diet=high-protein
         $.ajax({
@@ -62,58 +60,49 @@ The response had HTTP status code 401."-->
         }).done(function(response) {
           console.log(response);
         });
-        // function logResults(json){
-        //   console.log(json);
-        // }
 
-        // $.ajax({
-        //   url: queryURL,
-        //   dataType: "jsonp",
-        //   jsonpCallback: "logResults"
-        // });
-        // -----------------------------------------------------------------------
-      });
-      var config = {
-        apiKey: "AIzaSyC8tE8l_DBoyPfFaiRc5fYfZ6jBK9XrcSs",
-        authDomain: "groupproject-1b84f.firebaseapp.com",
-        databaseURL: "https://groupproject-1b84f.firebaseio.com",
-        projectId: "groupproject-1b84f",
-        storageBucket: "",
-        messagingSenderId: "208222818748"
-      };
-      firebase.initializeApp(config);
-
-      var database = firebase.database();
-
-      $("#findIngr").on("click", function(event) {
-        event.preventDefault();
-        var ingredient_1 = $("#ingr-input").val().trim();
-
-
-        var ingredients = {
-          ingredient_1: ingredient_1,
-
+        var config = {
+          apiKey: "AIzaSyC8tE8l_DBoyPfFaiRc5fYfZ6jBK9XrcSs",
+          authDomain: "groupproject-1b84f.firebaseapp.com",
+          databaseURL: "https://groupproject-1b84f.firebaseio.com",
+          projectId: "groupproject-1b84f",
+          storageBucket: "",
+          messagingSenderId: "208222818748"
         };
+        firebase.initializeApp(config);
+
+        var database = firebase.database();
+
+        $("#ingr-input").on("click", function(event) {
+          event.preventDefault();
+          var ingredient_1 = $("ingr-input").val().trim();
 
 
-        database.ref().push(ingredients);
+          var ingredients = {
+            ingredient_1: ingredient_1,
 
-        console.log(ingredients.ingredient_1);
-
-
-
-        });
-
-        dataRef.ref().on("child_added", function(childSnapshot) {
-
-          // Log everything that's coming out of snapshot
-          console.log(childSnapshot.val().ingredient_1);
+          };
 
 
-        // Handle the errors
-        }, function(errorObject) {
-          console.log("Errors handled: " + errorObject.code);
-        });
+          database.ref().push(ingredients);
+
+          console.log(ingredients.ingredient_1);
+
+
+
+          });
+
+          dataRef.ref().on("child_added", function(childSnapshot) {
+
+            // Log everything that's coming out of snapshot
+            console.log(childSnapshot.val().ingredient_1);
+
+
+          // Handle the errors
+          }, function(errorObject) {
+            console.log("Errors handled: " + errorObject.code);
+          });---------------------------------------------------------------------
+      });
     </script>
   </div>
 </body>
