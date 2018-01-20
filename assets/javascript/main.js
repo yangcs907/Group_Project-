@@ -1,14 +1,18 @@
 
 function searchRecipes(one, two, three, four, five) {
-  var queryURL = "https://api.edamam.com/search?q=chicken&app_id=${YOUR_APP_ID}&app_key=${015a1dc7}&from=0&to=3&calories=gte%20591,%20lte%20722&health=alcohol-free"
+  var ingredient = $("#ingr-input").val().trim();
+
+  var appId = "36c66d3a"
+
+  var appKey = "8be8dd8b6a6f98a5221770fcb1d2f043"
+  // Here we construct our URL
+  var queryURL = "https://api.edamam.com/search?q=" + ingredient + "&app_id=" + appId + "&app_key=" + appKey + "";
   $.ajax({
     url: queryURL,
     method: "GET"
   }).done(function(response) {
     console.log(response);
-
-
-  }
+};
 };
 
 $("").on("click", function(event) {
