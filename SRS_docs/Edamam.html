@@ -53,7 +53,9 @@ The response had HTTP status code 401."-->
         var appKey = "8be8dd8b6a6f98a5221770fcb1d2f043"
 
         // Here we construct our URL
-        var queryURL = "https://api.edamam.com/search?q=" + ingredient + "&app_id=$" + appId + "&app_key=$" + appKey + "";
+        var queryURL = "https://api.edamam.com/search?q=" + ingredient + "&app_id=" + appId + "&app_key=" + appKey + "";
+
+        // `https://api.edamam.com/search?q=${req.query.search}&app_id=${APP_ID}&app_key=${API_KEY}`
 
         // https://api.edamam.com/search?app_id=yourappid&app_key=yourappkey&q=butter&diet=low-carb&diet=high-protein
 
