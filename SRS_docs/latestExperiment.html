@@ -113,6 +113,16 @@
 
           });
 
+            var retrCarbData = JSON.parse(localStorage.getItem('carbDataLS'));
+
+            var retrProData = JSON.parse(localStorage.getItem('proDataLS'));
+
+            var retrFatData = JSON.parse(localStorage.getItem('fatDataLS'));
+
+            var retrSatFatData = JSON.parse(localStorage.getItem('satFatDataLS'));
+
+            var retrFiberData = JSON.parse(localStorage.getItem('fiberDataLS'));
+
 
       var nutrUSDA = $("#nutrChart");
 
@@ -136,19 +146,9 @@
             // representing the most important
             // nutrient data.
 
-            var retrCarbData = JSON.parse(localStorage.getItem('carbDataLS'));
-
-            var retrProData = JSON.parse(localStorage.getItem('proDataLS'));
-
-            var retrFatData = JSON.parse(localStorage.getItem('fatDataLS'));
-
-            var retrSatFatData = JSON.parse(localStorage.getItem('satFatDataLS'));
-
-            var retrFiberData = JSON.parse(localStorage.getItem('fiberDataLS'));
-
               datasets: [{
                   label: 'Percentage by Nutrient',
-                  data: [retrCarbData, retrProData, retrFatData, retrSatFatData, rtrFiberData],
+                  data: [retrCarbData, retrProData, retrFatData, retrSatFatData, retrFiberData],
                   backgroundColor: [
                       'red',
                       'blue',
