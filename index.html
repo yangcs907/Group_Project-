@@ -5,20 +5,11 @@
   <meta charset="utf-8">
   <title>In Search of Edamam Response</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+  <script src="https://www.gstatic.com/firebasejs/live/3.0/firebase.js"></script>
+
 </head>
 
-<!--The good news is that the API-call URL, as constructed below, does seem to be correct. It does not yield a
-"400 bad request" error, when employed. The bad news is that the requests do consistently yield
-""401 Unauthorized" errors. There's more information about this, below.
-=========================================================
-This error I keep getting seems to be because of a CORS (cross-origin resource sharing) security limitation of
-the browser. There are ways to get around this, supposedly, but I've been unsuccessful in employing any, so far.
-I hope one of you knows more about such things.
-The actual text of the error is as follows (in quotes).
-=========================================================
-"XMLHttpRequest cannot load http://api.edamam.com/search?q=kale&app_id=$015a1dc7&app_key=$16bab94aee14b5881f28798e788c26e0%E2%80%94.
-No 'Access-Control-Allow-Origin' header is present on the requested resource. Origin 'null' is therefore not allowed access.
-The response had HTTP status code 401."-->
+<!--HTML template to test firebase functionality to store user input-->
 
 <body>
   <div class="container">
@@ -35,32 +26,10 @@ The response had HTTP status code 401."-->
       <!-- This button will trigger our AJAX call -->
       <input id="findIngr" type="submit" value="ingredient search">
     </form>
+  </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script type="text/javascript">
-      // This .on("click") function will trigger the AJAX Call
-      $("#findIngr").on("click", function(event) {
-        // event.preventDefault() can be used to prevent an event's default behavior.
-        // Here, it prevents the submit button from trying to submit a form when clicked
-        event.preventDefault();
-        // Here we grab the text from the input box
-        var ingredient = $("#ingr-input").val().trim();
-
-        var appId = "36c66d3a"
-
-        var appKey = "8be8dd8b6a6f98a5221770fcb1d2f043"
-        // Here we construct our URL
-        var queryURL = "https://api.edamam.com/search?q=" + ingredient + "&app_id=" + appId + "&app_key=" + appKey + "&from=0&to=1";
-        // `https://api.edamam.com/search?q=${req.query.search}&app_id=${APP_ID}&app_key=${API_KEY}`
-        // https://api.edamam.com/search?app_id=yourappid&app_key=yourappkey&q=butter&diet=low-carb&diet=high-protein
-        $.ajax({
-          // xhrFields: {cors: false},
-          url: queryURL,
-          method: "GET"
-        }).done(function(response) {
-          console.log(response);
-        });
-
+    <script>
         var config = {
           apiKey: "AIzaSyC8tE8l_DBoyPfFaiRc5fYfZ6jBK9XrcSs",
           authDomain: "groupproject-1b84f.firebaseapp.com",
@@ -71,40 +40,29 @@ The response had HTTP status code 401."-->
         };
         firebase.initializeApp(config);
 
+        // Create a variable to reference the database.
         var database = firebase.database();
 
-        $("#ingr-input").on("click", function(event) {
+        // Initial Values
+        var name = ""
+
+        // Capture Button Click
+        $("#findIngr").on("click", function(event) {
           event.preventDefault();
-          var ingredient_1 = $("ingr-input").val().trim();
 
+          // Grabbed values from text boxes
+          name = $("#ingr-input").val().trim();
 
-          var ingredients = {
-            ingredient_1: ingredient_1,
-
-          };
-
-
-          database.ref().push(ingredients);
-
-          console.log(ingredients.ingredient_1);
-
-
-
+          // Code for handling the push
+          database.ref().push({
+            name: name,
           });
+          console.log(name);
 
-          dataRef.ref().on("child_added", function(childSnapshot) {
+        });
+        // Firebase watcher + initial loader + order/limit HINT: .on("child_added"
 
-            // Log everything that's coming out of snapshot
-            console.log(childSnapshot.val().ingredient_1);
-
-
-          // Handle the errors
-          }, function(errorObject) {
-            console.log("Errors handled: " + errorObject.code);
-          });---------------------------------------------------------------------
-      });
-    </script>
-  </div>
+        </script>
 </body>
 
 </html>
