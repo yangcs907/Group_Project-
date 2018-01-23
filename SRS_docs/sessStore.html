@@ -27,7 +27,15 @@ function postData () {
 
 	// $("#thisHere").text(retrievedData.hits[0].recipe.calories);
 
-	$("#thisHere").text(JSON.stringify(retrievedData.hits[0].recipe.totalDaily.FASAT));
+	$("#thisHere").append ("CALORIES: " + (JSON.stringify(retrievedData.hits[0].recipe.calories + ", ")));
+
+	// <br>
+
+	// $("#thisHere").text(JSON.stringify(retrievedData.hits[0].recipe.totalDaily.FASAT));
+
+	// <br>
+
+	$("#thisHere").append ("Saturated Fat: " + (JSON.stringify(retrievedData.hits[0].recipe.totalDaily.FASAT)));
 
 };
 
