@@ -99,61 +99,43 @@
         })
 
       });
+      
 
-
-      var ctx = $("#nutrChart");
-
-      Chart.defaults.global.defaultFontFamily = 'Times';
-      Chart.defaults.global.defaultFontColor = 'grey';
-
-      var ourChart = new Chart(ctx, {
-          type: 'horizontalBar',
+      var nutrUSDA = $("#nutrChart");
+      var theChart = new Chart(nutrUSDA, {
+          type: 'bar',
           data: {
-              labels: ["Nutr1", "Nutr2", "Nutr3", "Nutr4", "Nutr5"],
+              labels: [], // consider hard coding, rather than JSON derivation
               datasets: [{
-                  label: 'Percentage by Nutrient',
-                  data: [18, 31, 6, 11, 25, 2],
+                  label: '% USDA Daily Recommendation',
+                  data: [], // derive from JSON
                   backgroundColor: [
-                      'red',
-                      'blue',
-                      'yellow',
-                      'purple',
-                      'green',
+                      'rgba(255, 99, 132, 0.2)',
+                      'rgba(54, 162, 235, 0.2)',
+                      'rgba(255, 206, 86, 0.2)',
+                      'rgba(75, 192, 192, 0.2)',
+                      'rgba(153, 102, 255, 0.2)'
                   ],
-                  // borderColor: [
-                  //     'rgba(255,99,132,1)',
-                  //     'rgba(54, 162, 235, 1)',
-                  //     'rgba(255, 206, 86, 1)',
-                  //     'rgba(75, 192, 192, 1)',
-                  //     'rgba(153, 102, 255, 1)',
-                  //     'rgba(255, 159, 64, 1)'
-                  // ],
-                  // borderWidth: 2,
-                  borderColor: '#777',
-                  hoverBorderWidth: 4,
-                  hoverBorderColor: 'cyan',
+                  borderColor: [
+                      'rgba(255,99,132,1)',
+                      'rgba(54, 162, 235, 1)',
+                      'rgba(255, 206, 86, 1)',
+                      'rgba(75, 192, 192, 1)',
+                      'rgba(153, 102, 255, 1)',
+                  ],
+                  borderWidth: 1
               }]
           },
           options: {
-            title: {
-              display: true,
-              text:'USDA Recommended Daily Consumption (%)',
-              fontSize: 20
-              },
-            legend: {
-              display: false
-            },
-            scales: {
-                  xAxes: [{
+              scales: {
+                  yAxes: [{
                       ticks: {
-                        suggestedMin: 0,
-                        suggestedMax: 40,
-                        stepSize: 10
+                          beginAtZero:true
                       }
-                  }],
-              },
-            },
-          });
+                  }]
+              }
+          }
+      });
     </script>
   </div>
 </body>
