@@ -15,9 +15,10 @@
 	</div>
 
 <script type="text/javascript">
+
+var retrievedData = JSON.parse(localStorage.getItem('ourData'));
 	
-function getData () {
-	var retrievedData = JSON.parse(localStorage.getItem('ourData'));
+function postData () {
 	console.log(retrievedData);
 
 	// $("#thisHere").text(JSON.stringify(retrievedData));
@@ -30,9 +31,11 @@ function getData () {
 
 };
 
-getData();
+postData();
 
+var vari = JSON.stringify(retrievedData.hits[0].recipe.totalDaily.FASAT);
 
+console.log(vari);
 
 </script>
 	
