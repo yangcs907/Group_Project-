@@ -72,21 +72,41 @@
           var y = response;
 
           localStorage.setItem('ourData', JSON.stringify(response));
+        });
 
-          $("#thisHere").append ("Carbohydrates: " + (JSON.stringify(response.hits[0].recipe.totalDaily.CHOCDF)));
+        var retrData = JSON.parse(localStorage.getItem('ourData'));
 
-        $("#thisHere").append ("Protein: " + (JSON.stringify(response.hits[0].recipe.totalDaily.PROCNT)));
+        var carbData = JSON.stringify(retrData.hits[0].recipe.totalDaily.CHOCDF);
 
-        $("#thisHere").append ("Total Fat: " + (JSON.stringify(response.hits[0].recipe.totalDaily.FAT)));
+        console.log(carbData);
 
-        $("#thisHere").append ("Saturated Fat: " + (JSON.stringify(response.hits[0].recipe.totalDaily.FASAT)));
+        var proData = JSON.stringify(retrData.hits[0].recipe.totalDaily.PROCNT);
 
-        $("#thisHere").append ("Fiber: " + (JSON.stringify(response.hits[0].recipe.totalDaily.FIBTG)));
+        var fatData = JSON.stringify(retrData.hits[0].recipe.totalDaily.FAT);
 
-        })
+        var satFatData = JSON.stringify(retrData.hits[0].recipe.totalDaily.FASAT);
 
-      });
+        var fiberData = JSON.stringify(retrData.hits[0].recipe.totalDaily.FIBTG);  
+
+        // for each in [carbData, proData, fatData, fatSatData, fiberData] {
+        //   var newDiv = $("<div>");
+        //   newDiv.text()
+        // }
+
+          $("#thisHere").append ("Carbohydrates: " + carbData);
+
+          $("#thisHere").append ("Protein: " + proData);
+
+          $("#thisHere").append ("Total Fat: " + fatData);
+
+          $("#thisHere").append ("Saturated Fat: " + satFatData);
+
+          $("#thisHere").append ("Fiber: " + fiberData);
+
+          });
+
       
+
 
       var nutrUSDA = $("#nutrChart");
 
