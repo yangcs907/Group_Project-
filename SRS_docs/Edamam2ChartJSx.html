@@ -101,13 +101,13 @@
       });
 
 
-      var ctx = $("#nutrChart");
+      var nutrUSDA = $("#nutrChart");
 
       Chart.defaults.global.defaultFontFamily = 'Times';
       Chart.defaults.global.defaultFontColor = 'grey';
 
-      var ourChart = new Chart(ctx, {
-          type: 'horizontalBar',
+      var theChart = new Chart(nutrUSDA, {
+          type: 'bar',
           data: {
               labels: ["Nutr1", "Nutr2", "Nutr3", "Nutr4", "Nutr5"],
               datasets: [{
