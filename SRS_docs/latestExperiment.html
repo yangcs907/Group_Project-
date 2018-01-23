@@ -82,11 +82,19 @@
 
         var proData = JSON.stringify(retrData.hits[0].recipe.totalDaily.PROCNT);
 
+        localStorage.setItem('proDataLS', JSON.stringify(retrData.hits[0].recipe.totalDaily.PROCNT));
+
         var fatData = JSON.stringify(retrData.hits[0].recipe.totalDaily.FAT);
+
+        localStorage.setItem('fatDataLS', JSON.stringify(retrData.hits[0].recipe.totalDaily.FAT));
 
         var satFatData = JSON.stringify(retrData.hits[0].recipe.totalDaily.FASAT);
 
-        var fiberData = JSON.stringify(retrData.hits[0].recipe.totalDaily.FIBTG);  
+        localStorage.setItem('fatSatDataLS', JSON.stringify(retrData.hits[0].recipe.totalDaily.FASAT));
+
+        var fiberData = JSON.stringify(retrData.hits[0].recipe.totalDaily.FIBTG);
+
+        localStorage.setItem('fiberDataLS', JSON.stringify(retrData.hits[0].recipe.totalDaily.FIBTG)); 
 
         // for each in [carbData, proData, fatData, fatSatData, fiberData] {
         //   var newDiv = $("<div>");
@@ -104,8 +112,6 @@
           $("#thisHere").append ("Fiber: " + fiberData);
 
           });
-
-      
 
 
       var nutrUSDA = $("#nutrChart");
@@ -130,9 +136,19 @@
             // representing the most important
             // nutrient data.
 
+            var retrCarbData = JSON.parse(localStorage.getItem('carbDataLS'));
+
+            var retrProData = JSON.parse(localStorage.getItem('proDataLS'));
+
+            var retrFatData = JSON.parse(localStorage.getItem('fatDataLS'));
+
+            var retrSatFatData = JSON.parse(localStorage.getItem('satFatDataLS'));
+
+            var retrFiberData = JSON.parse(localStorage.getItem('fiberDataLS'));
+
               datasets: [{
                   label: 'Percentage by Nutrient',
-                  data: [carbData, proData, fatData, satFatData, fiberData],
+                  data: [retrCarbData, retrProData, retrFatData, retrSatFatData, rtrFiberData],
                   backgroundColor: [
                       'red',
                       'blue',
