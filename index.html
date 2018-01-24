@@ -134,7 +134,7 @@
 
 	<div class="card-deck">
   
-  		<div class="card">
+  		<div class="card results" >
     
     		<img class="card-img-top" src="http://littlespicejar.com/wp-content/uploads/2016/08/Steak-Fajita-Bowls-with-Garlic-Lime-Rice-2.jpg" alt="Card image cap">
     
@@ -148,7 +148,7 @@
   
   		</div>
   
-  		<div class="card">
+  		<div class="card results">
     
     		<img class="card-img-top" src="https://images.meredith.com/fitness/images/recipe/ss_RU242469.jpg" alt="Card image cap">
     
@@ -162,7 +162,7 @@
   
   		</div>
   
-  		<div class="card">
+  		<div class="card results">
     
     		<img class="card-img-top" src="http://www.eatwell101.com/wp-content/uploads/2017/06/baked-chicken-breasts-in-oven.jpg" alt="Card image cap">
     
@@ -239,22 +239,49 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script type="text/javascript">
 
+    	var recipe_sel = ""; 
     	
     	//On page load the content container should be hidden 
     	$(document).ready(function(){
 
     		$("#search-results").hide();
+    		
     		$("#content").hide();
 
     		
     		//User inputs ingreds. content appears 
     		$("button").click(function(){
 
-    			console.log("i was clicked"); 
-        
-        		$("#ingred-search").slideToggle();
+    			//console.log("i was clicked");
 
-        		$("#search-results").show(); 
+    			$("#ingred-search").animate({bottom: "30px"});
+
+    			$("#quote").hide(); 
+        
+				$("#search-results").show();
+
+				//User selects recipe
+				$(".card.results").click(function() {
+					
+					console.log("I was clicked!");
+
+					//Hide list of recipes
+					$("#search-results").hide();
+					
+					//Show recipe selected and image
+					$("#content").show();
+
+
+
+
+
+					
+				})
+
+
+
+
+
 
 
     });
