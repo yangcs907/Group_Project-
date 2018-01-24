@@ -1,3 +1,4 @@
+
       $("#findIngr").on("click", function(event) {
         // event.preventDefault() can be used to prevent an event's default behavior.
         // Here, it prevents the submit button from trying to submit a form when clicked
