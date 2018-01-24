@@ -5,10 +5,10 @@
         event.preventDefault();
         // Here we grab the text from the input box
         var ingredient = $("#ingr-input").val().trim();
-        
+
         var appId = "015a1dc7"
         // "36c66d3a"
-        
+
         var appKey = "16bab94aee14b5881f28798e788c26e0"
         // "8be8dd8b6a6f98a5221770fcb1d2f043"
         // Here we construct our URL
@@ -50,7 +50,7 @@
         var satFatData = JSON.stringify(retrData.hits[0].recipe.totalDaily.FASAT.quantity);
         localStorage.setItem('satFatDataLS', JSON.stringify(retrData.hits[0].recipe.totalDaily.FASAT.quantity));
         var fiberData = JSON.stringify(retrData.hits[0].recipe.totalDaily.FIBTG.quantity);
-        localStorage.setItem('fiberDataLS', JSON.stringify(retrData.hits[0].recipe.totalDaily.FIBTG.quantity)); 
+        localStorage.setItem('fiberDataLS', JSON.stringify(retrData.hits[0].recipe.totalDaily.FIBTG.quantity));
         // for each in [carbData, proData, fatData, fatSatData, fiberData] {
         //   var newDiv = $("<div>");
         //   newDiv.text()
@@ -119,4 +119,47 @@
                   }],
               },
             },
+          });
+
+          var config = {
+            apiKey: "AIzaSyC8tE8l_DBoyPfFaiRc5fYfZ6jBK9XrcSs",
+            authDomain: "groupproject-1b84f.firebaseapp.com",
+            databaseURL: "https://groupproject-1b84f.firebaseio.com",
+            projectId: "groupproject-1b84f",
+            storageBucket: "",
+            messagingSenderId: "208222818748"
+          };
+          firebase.initializeApp(config);
+
+          var database = firebase.database();
+
+          // Capture Button Click
+          $("#fa fa-heart fa-stack-1x").on("click", function(event) {
+            event.preventDefault();
+
+            var favorites = {
+              url: exURL
+              recipe: recipeName
+            };
+            // Code for handling the push
+            database.ref().push(favorites
+            );
+            console.log(favorites.url);
+            console.log(favorites.recipe);
+
+          });
+
+          database.ref().on("child_added", function(childSnapshot, prevChildKey) {
+
+            console.log(childSnapshot.val());
+
+            var favoriteURL = childSnapshot.val().url;
+            var favoriteRecipe = childSnapshot.val().recipe;
+
+            console.log(favoriteURL);
+            console.log(favoriteRecipe);
+
+
+            $("#favoritesDiv").append(favoriteRecipe);
+            $("#favoritesDiv").append(favoriteURL);
           });
