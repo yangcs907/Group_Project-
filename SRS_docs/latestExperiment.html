@@ -76,25 +76,27 @@
 
         var retrData = JSON.parse(localStorage.getItem('ourData'));
 
-        var carbData = JSON.stringify(retrData.hits[0].recipe.totalDaily.CHOCDF);
+        var carbData = JSON.stringify(retrData.hits[0].recipe.totalDaily.CHOCDF.quantity);
+
+        localStorage.setItem('carbDataLS', JSON.stringify(retrData.hits[0].recipe.totalDaily.PROCNT.quantity));
 
         console.log(carbData);
 
-        var proData = JSON.stringify(retrData.hits[0].recipe.totalDaily.PROCNT);
+        var proData = JSON.stringify(retrData.hits[0].recipe.totalDaily.PROCNT.quantity);
 
-        localStorage.setItem('proDataLS', JSON.stringify(retrData.hits[0].recipe.totalDaily.PROCNT));
+        localStorage.setItem('proDataLS', JSON.stringify(retrData.hits[0].recipe.totalDaily.PROCNT.quantity));
 
-        var fatData = JSON.stringify(retrData.hits[0].recipe.totalDaily.FAT);
+        var fatData = JSON.stringify(retrData.hits[0].recipe.totalDaily.FAT.quantity);
 
-        localStorage.setItem('fatDataLS', JSON.stringify(retrData.hits[0].recipe.totalDaily.FAT));
+        localStorage.setItem('fatDataLS', JSON.stringify(retrData.hits[0].recipe.totalDaily.FAT.quantity));
 
-        var satFatData = JSON.stringify(retrData.hits[0].recipe.totalDaily.FASAT);
+        var satFatData = JSON.stringify(retrData.hits[0].recipe.totalDaily.FASAT.quantity);
 
-        localStorage.setItem('fatSatDataLS', JSON.stringify(retrData.hits[0].recipe.totalDaily.FASAT));
+        localStorage.setItem('fatSatDataLS', JSON.stringify(retrData.hits[0].recipe.totalDaily.FASAT.quantity));
 
-        var fiberData = JSON.stringify(retrData.hits[0].recipe.totalDaily.FIBTG);
+        var fiberData = JSON.stringify(retrData.hits[0].recipe.totalDaily.FIBTG.quantity);
 
-        localStorage.setItem('fiberDataLS', JSON.stringify(retrData.hits[0].recipe.totalDaily.FIBTG)); 
+        localStorage.setItem('fiberDataLS', JSON.stringify(retrData.hits[0].recipe.totalDaily.FIBTG.quantity)); 
 
         // for each in [carbData, proData, fatData, fatSatData, fiberData] {
         //   var newDiv = $("<div>");
@@ -113,15 +115,17 @@
 
           });
 
-            var retrCarbData = JSON.parse(localStorage.getItem('carbDataLS'));
+            var retrCarbData = localStorage.getItem('carbDataLS');
 
-            var retrProData = JSON.parse(localStorage.getItem('proDataLS'));
+            console.log(retrCarbData + "THIS");
 
-            var retrFatData = JSON.parse(localStorage.getItem('fatDataLS'));
+            var retrProData = localStorage.getItem('proDataLS');
 
-            var retrSatFatData = JSON.parse(localStorage.getItem('satFatDataLS'));
+            var retrFatData = localStorage.getItem('fatDataLS');
 
-            var retrFiberData = JSON.parse(localStorage.getItem('fiberDataLS'));
+            var retrSatFatData = localStorage.getItem('satFatDataLS');
+
+            var retrFiberData = localStorage.getItem('fiberDataLS');
 
 
       var nutrUSDA = $("#nutrChart");
