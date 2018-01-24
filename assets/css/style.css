@@ -45,6 +45,7 @@ h2 {
 	margin-top: 5px; 
 }
 
+
 #main-screen {
 
 	text-align: center;
@@ -66,12 +67,14 @@ h2 {
 #ingred-search {
 	margin: auto;
 
+
 }
 
 .card-deck {
 
 	margin-bottom: 50px;
-	height: 40%; 
+	height: 40%;
+	
 
 }
 
@@ -85,7 +88,10 @@ h2 {
 #recipe, #media {
 	margin-top: 30px;
 	color: brown;
+	margin-bottom: 50px;
 }
+
+
 
 
 
