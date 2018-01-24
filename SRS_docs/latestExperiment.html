@@ -76,6 +76,16 @@
 
         var retrData = JSON.parse(localStorage.getItem('ourData'));
 
+        var recipeName = JSON.stringify(retrData.hits[0].recipe.label);
+
+        var edURL = JSON.stringify(retrData.hits[0].recipe.uri);
+
+        console.log (edURL);
+
+        var exURL = JSON.stringify(retrData.hits[0].recipe.url);
+
+        console.log (exURL);
+
         var carbData = JSON.stringify(retrData.hits[0].recipe.totalDaily.CHOCDF.quantity);
 
         localStorage.setItem('carbDataLS', JSON.stringify(retrData.hits[0].recipe.totalDaily.CHOCDF.quantity));
@@ -118,6 +128,8 @@
             var retrCarbData = localStorage.getItem('carbDataLS');
 
             console.log(retrCarbData + "THIS");
+
+            console.log(retrData);
 
             var retrProData = localStorage.getItem('proDataLS');
 
