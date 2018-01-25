@@ -82,8 +82,8 @@ h2 {
 
 } 
 
-.card.results {
-	width: 33%; 
+.card-deck {
+  width: 300px;
 }
 
 

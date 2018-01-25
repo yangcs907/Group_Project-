@@ -130,12 +130,7 @@
 
 <!--Container to hold recipe search results-->
 <div class="container" id="search-results">
-  <div class="row">
-    <div class="col-md-3"></div>
-  <!--   <div class="col-md-3"></div>
-   <div class="col-md-3"></div>
-    <div class="col-md-3"></div> -->
-  </div>
+  
   
 </div>
 
@@ -259,7 +254,7 @@
         var appKey = "f3dd5c58e168b6d60a6211c640e65b11"
 
         // Here we construct our URL
-        var queryURL = "https://api.edamam.com/search?q=" + ingredient + "&app_id=" + appId + "&app_key=" + appKey + "&from=0&to=1";
+        var queryURL = "https://api.edamam.com/search?q=" + ingredient + "&app_id=" + appId + "&app_key=" + appKey + "&from=0&to=5";
 
         
         $.ajax ({
