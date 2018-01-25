@@ -256,7 +256,14 @@
               var recipe_instr = response.hits[x].recipe.url;
               console.log(recipe_instr);
               //Placing results in DOM
+        var favorites = {
+          favImage: recipe_img,
+          favRecipe = recipe_title
+        };
+        localStorage.setItem('myDataStorage', JSON.stringify(favorites));
 
+        console.log(favorites.favImage);
+        console.log(favorites.favRecipe);
             // Creates a div to hold the recipe
               var newdiv = $('<div class="card-deck">'+
                                 '<div class="card results" >'+
@@ -285,24 +292,16 @@
     var database = firebase.database();
 
     // Capture Button Click
-    $("#fa fa-heart fa-stack-1x").on("click", function(event) {
+    $("#findIngr").on("click", function(event) {
       event.preventDefault();
-      var recipe_img = response.hits[x].recipe.image;
-            console.log(recipe_img);
-            //Retrieve recipe title
-      var recipe_title =  response.hits[x].recipe.label;
-            console.log(recipe_title);
-            var recipe_instr = response.hits[x].recipe.url;
-            console.log(recipe_instr);
-      var favorites = {
-        image: recipe_img,
-        recipe: recipe_title,
-      };
-      // Code for handling the push
+      var myData = localStorage.getItem("favorites");
       database.ref().push(favorites
       );
       console.log(favorites.image);
       console.log(favorites.recipe);
+      };
+      // Code for handling the push
+
 
     });
 
@@ -322,8 +321,11 @@
     });
 
 
+
+
+
     </script>
-    
+
 
 
 
