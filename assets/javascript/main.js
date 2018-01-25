@@ -1,21 +1,65 @@
+$("#findIngr").on("click", function(event) {
 
-function searchRecipes(one, two, three, four, five) {
-  var ingredient = $("#ingr-input").val().trim();
+        var recipe = $(this).attr("data-recipe");//
 
-  var appId = "36c66d3a"
+        // event.preventDefault() can be used to prevent an event's default behavior.
+        // Here, it prevents the submit button from trying to submit a form when clicked
+        event.preventDefault();
 
-  var appKey = "8be8dd8b6a6f98a5221770fcb1d2f043"
-  // Here we construct our URL
-  var queryURL = "https://api.edamam.com/search?q=" + ingredient + "&app_id=" + appId + "&app_key=" + appKey + "";
-  $.ajax({
-    url: queryURL,
-    method: "GET"
-  }).done(function(response) {
-    console.log(response);
-};
-};
+        // Here we grab the text from the input box
+        var ingredient = $("#ingr-input").val().trim();
+        
+        var appId = "35f72116"
+        
+        var appKey = "f3dd5c58e168b6d60a6211c640e65b11"
 
-$("").on("click", function(event) {
+        // Here we construct our URL
+        var queryURL = "https://api.edamam.com/search?q=" + ingredient + "&app_id=" + appId + "&app_key=" + appKey + "&from=0&to=3";
+
+        
+        $.ajax ({
+          url: queryURL,
+          method: "GET"
+        }).done(function(response) {
+
+          for(var x = 0; x < response.hits.length; x++) {
+
+              console.log(response);
+           
+        
+
+              // Retrieves the recipe image
+        var recipe_img = response.hits[x].recipe.image; 
+
+              console.log(recipe_img);
+
+              //Retrieve recipe title
+        var recipe_title =  response.hits[x].recipe.label; 
+
+              console.log(recipe_title);
+
+               var recipe_instr = response.hits[x].recipe.uri;
+
+              console.log(recipe_instr);
+
+
+              //Placing results in DOM
+            
+            // Creates a div to hold the recipe
+              var newdiv = $('<div class="card-deck">'+'<div class="card results" >'+'<img class="card-img-top" src=' + recipe_img+' alt="Card image cap">' +'<div class="card-body">' + '<h5 class="card-title">'+recipe_title+'</h5>'+'</div>' );
+              
+              
+          // Puts the entire Movie above the previous movies.
+              $("#search-results").append(newdiv); 
+            
+
+              
+
+            
+            }
+        })
+ });
+/*$("").on("click", function(event) {
   event.preventDefault();
   var ingredient_1 = $("").val().trim();
   var ingredient_2 = $("").val().trim();
@@ -28,7 +72,7 @@ $("").on("click", function(event) {
 
 
   // Initialize Firebase
-  var config = {
+    var config = {
     apiKey: "AIzaSyC8tE8l_DBoyPfFaiRc5fYfZ6jBK9XrcSs",
     authDomain: "groupproject-1b84f.firebaseapp.com",
     databaseURL: "https://groupproject-1b84f.firebaseio.com",
@@ -114,8 +158,8 @@ $("").on("click", function(event) {
         $("#thisHere").append ("Total Fat: " + fatData);
         $("#thisHere").append ("Saturated Fat: " + satFatData);
         $("#thisHere").append ("Fiber: " + fiberData);
-        });
-          var retrCarbData = localStorage.getItem('carbDataLS');
+        /*})*/
+        /*  var retrCarbData = localStorage.getItem('carbDataLS');
           console.log(retrCarbData + "THIS");
           var retrProData = localStorage.getItem('proDataLS');
           var retrFatData = localStorage.getItem('fatDataLS');
@@ -178,3 +222,4 @@ $("").on("click", function(event) {
 
 
     }
+*/

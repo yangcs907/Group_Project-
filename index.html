@@ -138,46 +138,11 @@
 
 
 <!--Container to hold selected recipe-->
-<div class="container" id="content">
-  	
-  	<div class="row">
-  	  
-  		<div class="col-md-6">
-  				
-  				<h5>Recipe Image</h5>
-  			
-  			<img src="https://media.istockphoto.com/photos/female-hand-cut-tomatoes-rustic-kitchen-tablevegetarian-concept-picture-id502320166?k=6&m=502320166&s=612x612&w=0&h=GMNnaPDdq1kWNrvqT9PAoES1jrc0Ki0m4tjCIRH1kRo=" alt="..." class="img-thumbnail">
-  			
-  			</div>
-  	
-  		<div class="col-md-6" id="recipe">
-  	
-  			<div class="card">
-  	  
-  				<div class="card-body">
-  	    				
-  	    				<ol>
-  	    					
-  	    					<h5>Baked Dijon Salmon</h5><br>
-  	
-  	    					<li>Preheat oven to 400 degrees F (200 degrees C).</li><br>
-  	    				
-  	    					<li>In a small bowl, stir together butter, mustard, and honey. Set aside. In another bowl, mix together bread crumbs, pecans, and parsley.</li><br>
-  	
-  							<li>Brush each salmon fillet lightly with honey mustard mixture, and sprinkle the tops of the fillets with the bread crumb mixture.</li><br>
-  		
-  							<li>Bake salmon 12 to 15 minutes in the preheated oven, or until it flakes easily with a fork. Season with salt and pepper, and garnish with a wedge of lemon.</li><br>
-  	
-  					</ol>
-  	  
-  				</div>
-  				
-  				</div>
-  		
-  			</div>
-  		</div>
+<div class="container" id="content"> 
+
 </div>
-  	
+    
+    
   	
 
 
@@ -193,130 +158,8 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script type="text/javascript">
-
-    	
-    	
-    	//On page load the content container should be hidden 
-    	$(document).ready(function() {
-
-    		$("#search-results").hide();
-    		
-    		$("#content").hide();
-
-        $("#recipe").hide();
-
-          }) 
-
-    		
-    		//User inputs ingreds. content appears 
-    		$("#findIngr").click(function() {
-
-    			//console.log("i was clicked");
-
-    			$("#ingred-search").animate({bottom: "30px"});
-
-    			$("#quote").hide(); 
-        
-				$("#search-results").show();
-
-				//User selects recipe
-				$(".card.results").click(function() {
-					
-					console.log("I was clicked!");
-
-					//Hide list of recipes
-					$("#search-results").hide();
-					
-					//Show recipe selected and image
-					$("#content").show();
-
-
-
-});
-
-})
-
-           // This .on("click") function will trigger the AJAX Call
-      $("#findIngr").on("click", function(event) {
-
-        var recipe = $(this).attr("data-recipe");//
-
-        // event.preventDefault() can be used to prevent an event's default behavior.
-        // Here, it prevents the submit button from trying to submit a form when clicked
-        event.preventDefault();
-
-        // Here we grab the text from the input box
-        var ingredient = $("#ingr-input").val().trim();
-        
-        var appId = "35f72116"
-        
-        var appKey = "f3dd5c58e168b6d60a6211c640e65b11"
-
-        // Here we construct our URL
-        var queryURL = "https://api.edamam.com/search?q=" + ingredient + "&app_id=" + appId + "&app_key=" + appKey + "&from=0&to=5";
-
-        
-        $.ajax ({
-          url: queryURL,
-          method: "GET"
-        }).done(function(response) {
-
-          for(var x = 0; x < response.hits.length; x++) {
-
-              console.log(response);
-           
-        
-
-              // Retrieves the recipe image
-        var recipe_img = response.hits[x].recipe.image; 
-
-              console.log(recipe_img);
-
-              //Retrieve recipe title
-        var recipe_title =  response.hits[x].recipe.label; 
-
-              console.log(recipe_title);
-
-              var recipe_instr = response.hits[x].recipe.url;
-
-              console.log(recipe_instr);
-
-              //Placing results in DOM
-            
-            // Creates a div to hold the recipe
-              var newdiv = $('<div class="card-deck">'+
-                                '<div class="card results" >'+
-                                '<img class="card-img-top" src=' + recipe_img+' alt="Card image cap">' +'<div class="card-body">' + '<h5 class="card-title">'+recipe_title+'</h5>'+'</div>' + '</div>' + '</div>' + '</div>' );
-              
-              
-          // Puts the entire Movie above the previous movies.
-              $("#search-results").append(newdiv); 
-              
-
-              
-
-            
-            }
-        })
-
-
-
-
-
-
-
-    });
-    	
-                                                                                                                                                         
-
-
-
-
-
-
-
-    </script>
+   
+   <script type="text/javascript" src="assets/javascript/main.js"></script>
 
 
 
@@ -324,4 +167,6 @@
 
 </html>
 
-
+      
+      
+      
