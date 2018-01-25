@@ -76,10 +76,14 @@ h2 {
 	
 }
 
-.card-img-top {
+ .card-img-top {
 
 	height: 20rem;
 
+} 
+
+.card.results {
+	width: 33%; 
 }
 
 

@@ -116,9 +116,9 @@
   
   		<div class="col-md-12" id="ingred-search">
   			
-  			<input class="form-control form-control-lg" type="text" placeholder="Ingredient Search"> <br>
+  			<input class="form-control form-control-lg" type="text" placeholder="Ingredient Search" id="ingr-input"> <br>
 
-  			<button type="button" class="btn btn-success">Find my recipe</button>
+  			<button type="button" class="btn btn-success" id="findIngr">Find my recipe</button>
   		
   		</div>
 
@@ -130,54 +130,16 @@
 
 <!--Container to hold recipe search results-->
 <div class="container" id="search-results">
-
-	<div class="card-deck">
-  
-  		<div class="card results" >
-    
-    		<img class="card-img-top" src="http://littlespicejar.com/wp-content/uploads/2016/08/Steak-Fajita-Bowls-with-Garlic-Lime-Rice-2.jpg" alt="Card image cap">
-    
-    			<div class="card-body">
-      
-      				<h5 class="card-title">STEAK FAJITA BOWLS WITH GARLIC LIME RICE</h5>
-      
-      				<p class="card-text">Homemade steak fajita bowls with garlic lime rice. These fajita bowls taste even better than the ones at Chipotle! The secret is the homemade marinade for the steak… it is to DIE for!</p>
-      
-				</div>
-  
-  		</div>
-  
-  		<div class="card results">
-    
-    		<img class="card-img-top" src="https://images.meredith.com/fitness/images/recipe/ss_RU242469.jpg" alt="Card image cap">
-    
-    			<div class="card-body">
-      
-      				<h5 class="card-title">Honey-Glazed Salmon, Rice and Kale Bowl</h5>
-      
-      				<p class="card-text">Honey-glazed salmon with rice and kale. Easy 30 min meal with amazing flavor!</p>
-    
-    			</div>
-  
-  		</div>
-  
-  		<div class="card results">
-    
-    		<img class="card-img-top" src="http://www.eatwell101.com/wp-content/uploads/2017/06/baked-chicken-breasts-in-oven.jpg" alt="Card image cap">
-    
-    			<div class="card-body">
-      
-      				<h5 class="card-title">Baked Chicken Breasts with Lemon & Veggies</h5>
-      
-      				<p class="card-text">A healthy, nourishing dinner prepared in just one-pan.</p>
-      
-    			</div>
-  
-  		</div>
-	
-	</div>
+  <div class="row">
+    <div class="col-md-3"></div>
+  <!--   <div class="col-md-3"></div>
+   <div class="col-md-3"></div>
+    <div class="col-md-3"></div> -->
+  </div>
   
 </div>
+
+	
 
 
 <!--Container to hold selected recipe-->
@@ -238,18 +200,22 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script type="text/javascript">
 
-    	var recipe_sel = ""; 
+    	
     	
     	//On page load the content container should be hidden 
-    	$(document).ready(function(){
+    	$(document).ready(function() {
 
     		$("#search-results").hide();
     		
     		$("#content").hide();
 
+        $("#recipe").hide();
+
+          }) 
+
     		
     		//User inputs ingreds. content appears 
-    		$("button").click(function(){
+    		$("#findIngr").click(function() {
 
     			//console.log("i was clicked");
 
@@ -272,10 +238,72 @@
 
 
 
+});
 
+})
 
-					
-				})
+           // This .on("click") function will trigger the AJAX Call
+      $("#findIngr").on("click", function(event) {
+
+        var recipe = $(this).attr("data-recipe");//
+
+        // event.preventDefault() can be used to prevent an event's default behavior.
+        // Here, it prevents the submit button from trying to submit a form when clicked
+        event.preventDefault();
+
+        // Here we grab the text from the input box
+        var ingredient = $("#ingr-input").val().trim();
+        
+        var appId = "35f72116"
+        
+        var appKey = "f3dd5c58e168b6d60a6211c640e65b11"
+
+        // Here we construct our URL
+        var queryURL = "https://api.edamam.com/search?q=" + ingredient + "&app_id=" + appId + "&app_key=" + appKey + "&from=0&to=1";
+
+        
+        $.ajax ({
+          url: queryURL,
+          method: "GET"
+        }).done(function(response) {
+
+          for(var x = 0; x < response.hits.length; x++) {
+
+              console.log(response);
+           
+        
+
+              // Retrieves the recipe image
+        var recipe_img = response.hits[x].recipe.image; 
+
+              console.log(recipe_img);
+
+              //Retrieve recipe title
+        var recipe_title =  response.hits[x].recipe.label; 
+
+              console.log(recipe_title);
+
+              var recipe_instr = response.hits[x].recipe.url;
+
+              console.log(recipe_instr);
+
+              //Placing results in DOM
+            
+            // Creates a div to hold the recipe
+              var newdiv = $('<div class="card-deck">'+
+                                '<div class="card results" >'+
+                                '<img class="card-img-top" src=' + recipe_img+' alt="Card image cap">' +'<div class="card-body">' + '<h5 class="card-title">'+recipe_title+'</h5>'+'</div>' + '</div>' + '</div>' + '</div>' );
+              
+              
+          // Puts the entire Movie above the previous movies.
+              $("#search-results").append(newdiv); 
+              
+
+              
+
+            
+            }
+        })
 
 
 
@@ -284,8 +312,9 @@
 
 
     });
-});
     	
+                                                                                                                                                         
+
 
 
 
