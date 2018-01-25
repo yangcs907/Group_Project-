@@ -53,19 +53,17 @@
         var database = firebase.database();
 
         // Capture Button Click
-        $("#fa fa-heart fa-stack-1x").on("click", function(event) {
+        $("#findIngr").on("click", function(event) {
           event.preventDefault();
-          var recipeName = JSON.stringify(retrData.hits[0].recipe.label);
-          var exURL = JSON.stringify(retrData.hits[0].recipe.url);
-          var favorites = {
-            url: exURL,
-            recipe: recipeName,
+          var myData = localStorage.getItem("favorites");
+          database.ref().push(myData
+          );
+          console.log(favorites.image);
+          console.log(favorites.recipe);
+          console.log(myData);
           };
           // Code for handling the push
-          database.ref().push(favorites
-          );
-          console.log(favorites.url);
-          console.log(favorites.recipe);
+
 
         });
 
@@ -73,15 +71,14 @@
 
           console.log(childSnapshot.val());
 
-          var favoriteURL = childSnapshot.val().url;
-          var favoriteRecipe = childSnapshot.val().recipe;
-
-          console.log(favoriteURL);
-          console.log(favoriteRecipe);
+          var favorite = childSnapshot.val().myData;
 
 
-          $("#favoritesDiv").append(favoriteRecipe);
-          $("#favoritesDiv").append(favoriteURL);
+          console.log(favorite);
+
+
+          $("#favoritesDiv").append(favorite);
+
         });
 
         var carbData = JSON.stringify(retrData.hits[0].recipe.totalDaily.CHOCDF.quantity);

@@ -245,6 +245,46 @@
         }).done(function(response) {
           for(var x = 0; x < response.hits.length; x++) {
               console.log(response);
+              var config = {
+                apiKey: "AIzaSyC8tE8l_DBoyPfFaiRc5fYfZ6jBK9XrcSs",
+                authDomain: "groupproject-1b84f.firebaseapp.com",
+                databaseURL: "https://groupproject-1b84f.firebaseio.com",
+                projectId: "groupproject-1b84f",
+                storageBucket: "",
+                messagingSenderId: "208222818748"
+              };
+              firebase.initializeApp(config);
+
+              var database = firebase.database();
+
+              // Capture Button Click
+              $("#findIngr").on("click", function(event) {
+                event.preventDefault();
+                var myData = localStorage.getItem("favorites");
+                database.ref().push(myData
+                );
+                console.log(favorites.image);
+                console.log(favorites.recipe);
+                console.log(myData);
+              });
+                // Code for handling the push
+
+
+              };
+
+              database.ref().on("child_added", function(childSnapshot, prevChildKey) {
+
+                console.log(childSnapshot.val());
+
+                var favorite = childSnapshot.val().myData;
+
+
+                console.log(favorite);
+
+
+                $("#favoritesDiv").append(favorite);
+
+              });
 
 
               // Retrieves the recipe image
@@ -256,10 +296,7 @@
               var recipe_instr = response.hits[x].recipe.url;
               console.log(recipe_instr);
               //Placing results in DOM
-        var favorites = {
-          favImage: recipe_img,
-          favRecipe = recipe_title
-        };
+
         localStorage.setItem('myDataStorage', JSON.stringify(favorites));
 
         console.log(favorites.favImage);
@@ -275,50 +312,11 @@
 
 
 
-            }
-        })
-    });
-
-    var config = {
-      apiKey: "AIzaSyC8tE8l_DBoyPfFaiRc5fYfZ6jBK9XrcSs",
-      authDomain: "groupproject-1b84f.firebaseapp.com",
-      databaseURL: "https://groupproject-1b84f.firebaseio.com",
-      projectId: "groupproject-1b84f",
-      storageBucket: "",
-      messagingSenderId: "208222818748"
-    };
-    firebase.initializeApp(config);
-
-    var database = firebase.database();
-
-    // Capture Button Click
-    $("#findIngr").on("click", function(event) {
-      event.preventDefault();
-      var myData = localStorage.getItem("favorites");
-      database.ref().push(favorites
-      );
-      console.log(favorites.image);
-      console.log(favorites.recipe);
-      };
-      // Code for handling the push
+            });
+        });
+    
 
 
-    });
-
-    database.ref().on("child_added", function(childSnapshot, prevChildKey) {
-
-      console.log(childSnapshot.val());
-
-      var favImage = childSnapshot.val().image;
-      var favRecipe = childSnapshot.val().recipe;
-
-      console.log(favImage);
-      console.log(favRecipe);
-
-
-      $("#favoritesDiv").append(favImage);
-      $("#favoritesDiv").append(favRecipe);
-    });
 
 
 
