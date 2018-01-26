@@ -116,9 +116,9 @@
   
   		<div class="col-md-12" id="ingred-search">
   			
-  			<input class="form-control form-control-lg" type="text" placeholder="Ingredient Search"> <br>
+  			<input class="form-control form-control-lg" type="text" placeholder="Ingredient Search" id="ingr-input"> <br>
 
-  			<button type="button" class="btn btn-success">Find my recipe</button>
+  			<button type="button" class="btn btn-success" id="findIngr">Find my recipe</button>
   		
   		</div>
 
@@ -130,96 +130,19 @@
 
 <!--Container to hold recipe search results-->
 <div class="container" id="search-results">
-
-	<div class="card-deck">
   
-  		<div class="card results" >
-    
-    		<img class="card-img-top" src="http://littlespicejar.com/wp-content/uploads/2016/08/Steak-Fajita-Bowls-with-Garlic-Lime-Rice-2.jpg" alt="Card image cap">
-    
-    			<div class="card-body">
-      
-      				<h5 class="card-title">STEAK FAJITA BOWLS WITH GARLIC LIME RICE</h5>
-      
-      				<p class="card-text">Homemade steak fajita bowls with garlic lime rice. These fajita bowls taste even better than the ones at Chipotle! The secret is the homemade marinade for the steak… it is to DIE for!</p>
-      
-				</div>
-  
-  		</div>
-  
-  		<div class="card results">
-    
-    		<img class="card-img-top" src="https://images.meredith.com/fitness/images/recipe/ss_RU242469.jpg" alt="Card image cap">
-    
-    			<div class="card-body">
-      
-      				<h5 class="card-title">Honey-Glazed Salmon, Rice and Kale Bowl</h5>
-      
-      				<p class="card-text">Honey-glazed salmon with rice and kale. Easy 30 min meal with amazing flavor!</p>
-    
-    			</div>
-  
-  		</div>
-  
-  		<div class="card results">
-    
-    		<img class="card-img-top" src="http://www.eatwell101.com/wp-content/uploads/2017/06/baked-chicken-breasts-in-oven.jpg" alt="Card image cap">
-    
-    			<div class="card-body">
-      
-      				<h5 class="card-title">Baked Chicken Breasts with Lemon & Veggies</h5>
-      
-      				<p class="card-text">A healthy, nourishing dinner prepared in just one-pan.</p>
-      
-    			</div>
-  
-  		</div>
-	
-	</div>
   
 </div>
+
+	
 
 
 <!--Container to hold selected recipe-->
 <div class="container" id="content">
-  	
-  	<div class="row">
-  	  
-  		<div class="col-md-6">
-  				
-  				<h5>Recipe Image</h5>
-  			
-  			<img src="https://media.istockphoto.com/photos/female-hand-cut-tomatoes-rustic-kitchen-tablevegetarian-concept-picture-id502320166?k=6&m=502320166&s=612x612&w=0&h=GMNnaPDdq1kWNrvqT9PAoES1jrc0Ki0m4tjCIRH1kRo=" alt="..." class="img-thumbnail">
-  			
-  			</div>
-  	
-  		<div class="col-md-6" id="recipe">
-  	
-  			<div class="card">
-  	  
-  				<div class="card-body">
-  	    				
-  	    				<ol>
-  	    					
-  	    					<h5>Baked Dijon Salmon</h5><br>
-  	
-  	    					<li>Preheat oven to 400 degrees F (200 degrees C).</li><br>
-  	    				
-  	    					<li>In a small bowl, stir together butter, mustard, and honey. Set aside. In another bowl, mix together bread crumbs, pecans, and parsley.</li><br>
-  	
-  							<li>Brush each salmon fillet lightly with honey mustard mixture, and sprinkle the tops of the fillets with the bread crumb mixture.</li><br>
-  		
-  							<li>Bake salmon 12 to 15 minutes in the preheated oven, or until it flakes easily with a fork. Season with salt and pepper, and garnish with a wedge of lemon.</li><br>
-  	
-  					</ol>
-  	  
-  				</div>
-  				
-  				</div>
-  		
-  			</div>
-  		</div>
+
+	<a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-show-count="false">Tweet</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 </div>
+<<<<<<< HEAD
 
 <div class="login-information">
 	<input type="text">
@@ -227,6 +150,10 @@
 	<button> Submit</button>
 </div>
   	
+=======
+    
+    
+>>>>>>> na-0118
   	
 
 
@@ -242,63 +169,8 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script type="text/javascript">
-
-    	var recipe_sel = ""; 
-    	
-    	//On page load the content container should be hidden 
-    	$(document).ready(function(){
-
-    		$("#search-results").hide();
-    		
-    		$("#content").hide();
-
-    		
-    		//User inputs ingreds. content appears 
-    		$("button").click(function(){
-
-    			//console.log("i was clicked");
-
-    			$("#ingred-search").animate({bottom: "30px"});
-
-    			$("#quote").hide(); 
-        
-				$("#search-results").show();
-
-				//User selects recipe
-				$(".card.results").click(function() {
-					
-					console.log("I was clicked!");
-
-					//Hide list of recipes
-					$("#search-results").hide();
-					
-					//Show recipe selected and image
-					$("#content").show();
-
-
-
-
-
-					
-				})
-
-
-
-
-
-
-
-    });
-});
-    	
-
-
-
-
-
-
-    </script>
+   
+   <script type="text/javascript" src="assets/javascript/main.js"></script>
 
 
 
@@ -306,4 +178,6 @@
 
 </html>
 
-
+      
+      
+      
