@@ -1,22 +1,22 @@
-
-
 <head>
-  
+
   <meta charset="utf-8">
-	
+
   <title>Top Shelf Crusaders</title>
-  
+
   <!--Bootstrap-->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-  
+
   <!--Font Awesome-->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-  
+
   <!--Google Fonts-->
   <link href="https://fonts.googleapis.com/css?family=Redressed" rel="stylesheet">
 
   <!--CSS-->
   <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+
+  <script src="https://www.gstatic.com/firebasejs/live/3.0/firebase.js"></script>
 
 </head>
 
@@ -28,101 +28,99 @@
 	<video autoplay muted>
 
 		<source src="assets/images/background.webm" type="video/webm">
-		
+
 		<source src="assets/images/background.mp4" type="video/mp4">
-		
+
 		<source src="assets/images/background.ogv" type="video/ogv">
 
 	</video>
 
 
 	<!--Nav Bar-->
-  
+
 		<nav class="navbar navbar-expand-xl navbar-light .text-muted">
-  
+
   		<!--Logo-->
   			<h2>Top Shelf <i class="fa fa-cutlery" aria-hidden="true"></i> Crusaders</h2>
- 		
+
  		<!--Responsive Dropdown Menu-->
  			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-   
+
    			<span class="navbar-toggler-icon"></span>
- 
+
  			</button>
 
-   
+
 
 	<div class="collapse navbar-collapse" id="navbarText">
-  			
+
     		<ul class="navbar-nav ml-auto">
-      
+
         	  <!--Twitter Link-->
       			<li class="nav-item active">
-       
+
         			<a class="nav-link" href="">
 
         				<span class="fa-stack fa-lg">
-  
+
   						<i class="fa fa-square-o fa-stack-2x"></i>
 
   						<i class="fa fa-twitter fa-stack-1x"></i>
 
 						</span>
-					
+
 					</a>
-      
+
       			</li>
-      
+
       		   <!--Favorite Link-->
       			<li class="nav-item">
-        
-        			<a class="nav-link" href="">
+
 
         				<span class="fa-stack fa-lg">
-	
+
 						<i class="fa fa-square-o fa-stack-2x"></i>
 
-						<i class="fa fa-heart fa-stack-1x" aria-hidden="true"></i>
-			
+						<i class="fa fa-heart fa-stack-1x" aria-hidden="true" data-toggle="modal" data-target="#exampleModal"></i>
+
 						</span>
 
-					</a>
-      			
+
       			</li>
-      
-      
+
+
     		</ul>
    </div>
-   		
+
 
 </nav>
 
 <!--Main-screen-->
 <div class="container" id="main-screen">
-  
+
   	<div class="row">
-  
+
 		<div class="col-md-12" id="quote">
 
 			<p><em>"You don’t need a silver fork to eat good food.”</em><br>
-			
+
 			<strong>  -Paul Prudhomme</strong></p>
-			
+
 		</div>
 
 	</div>
 
 	<div class="row">
-  
+
   		<div class="col-md-12" id="ingred-search">
-  			
+
   			<input class="form-control form-control-lg" type="text" placeholder="Ingredient Search" id="ingr-input"> <br>
 
   			<button type="button" class="btn btn-success" id="findIngr">Find my recipe</button>
-  		
+        
   		</div>
 
-  		
+
 
   	</div>
 
@@ -130,11 +128,15 @@
 
 <!--Container to hold recipe search results-->
 <div class="container" id="search-results">
+
+
+</div>
   
   
 </div>
 
-	
+
+
 
 
 <!--Container to hold selected recipe-->
@@ -142,26 +144,40 @@
 
 	<a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-show-count="false">Tweet</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 </div>
-<<<<<<< HEAD
 
-<div class="login-information">
-	<input type="text">
-	<input type="text">
-	<button> Submit</button>
+
+
+<!-- Code for Modal-->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Tell Us What You Think!</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="form-group">
+            <label for="user_name" class="col-form-label">Your Name</label>
+            <input type="text" class="form-control" id="user_name">
+          </div>
+          <div class="form-group">
+            <label for="feedback_text" class="col-form-label">Feedback:</label>
+            <textarea class="form-control" id="feedback_text"></textarea>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Submit</button>
+      </div>
+    </div>
+  </div>
 </div>
-  	
-=======
-    
-    
->>>>>>> na-0118
-  	
 
 
-
-
-
-
-		
 
 
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
@@ -169,7 +185,7 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-   
+
    <script type="text/javascript" src="assets/javascript/main.js"></script>
 
 
@@ -178,6 +194,3 @@
 
 </html>
 
-      
-      
-      
