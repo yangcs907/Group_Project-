@@ -47,16 +47,16 @@
             
             //Placing results in DOM
             // Creates a div to hold the recipe
-            var recipeCard = $('<div class="card results col-sm-3 col-lg-3 col-md-3" >'+
+            var recipeCard = $('<a href=' + recipe_instr + '<div class="card results col-sm-3 col-lg-3 col-md-3" >'+ 
                                   '<img class="card-img-top" src=' + recipe_img + ' alt="Card image cap">'
                                  +'<div class="card-body">' + 
                                     '<h5 class="card-title">' + recipe_title + '</h5>' + 
                                   '</div>' + 
-                                '</div>');
+                                '</div>' + '</a>');
            
             $("#deck-" + deckNumber).append(recipeCard); 
             
-            //Add the src attr for recipe instructions url 
+            //Add the src attr for recipe instructions url on each card
              recipeCard.attr('src', recipe_instr);
              recipeCard.addClass("food");
              recipeCard.attr("data-instr", "recipe");
@@ -66,6 +66,10 @@
                   var recipe_location = $(this).attr('src');
              
                    console.log(recipe_location); 
+
+
+
+
             })
           }
           
