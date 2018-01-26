@@ -1,3 +1,6 @@
+
+
+
 // This .on("click") function will trigger the AJAX Call
       $("#findIngr").on("click", function(event) {
 
@@ -53,11 +56,11 @@
            
             $("#deck-" + deckNumber).append(recipeCard); 
             
+             recipeCard.attr('src', recipe_instr);
+            recipeCard.attr("data-instr", "recipe");
           }
 
-            $(".card.results").click(function() {
-              console.log(recipe_title); 
-            })
+           
         })
 
       });
