@@ -56,10 +56,19 @@
            
             $("#deck-" + deckNumber).append(recipeCard); 
             
+            //Add the src attr for recipe instructions url 
              recipeCard.attr('src', recipe_instr);
-            recipeCard.attr("data-instr", "recipe");
-          }
+             recipeCard.addClass("food");
+             recipeCard.attr("data-instr", "recipe");
 
+               $(".food").click(function() {
+              
+                  var recipe_location = $(this).attr('src');
+             
+                   console.log(recipe_location); 
+            })
+          }
+          
            
         })
 
