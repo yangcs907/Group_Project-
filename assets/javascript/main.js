@@ -1,4 +1,5 @@
-$("#findIngr").on("click", function(event) {
+// This .on("click") function will trigger the AJAX Call
+      $("#findIngr").on("click", function(event) {
 
 <<<<<<< HEAD
       $("#findIngr").on("click", function(event) {
@@ -111,134 +112,58 @@ $("#findIngr").on("click", function(event) {
         // Here we grab the text from the input box
         var ingredient = $("#ingr-input").val().trim();
         
-        var appId = "35f72116"
+        var appId = "36c66d3a"
         
-        var appKey = "f3dd5c58e168b6d60a6211c640e65b11"
+        var appKey = "8be8dd8b6a6f98a5221770fcb1d2f043"
 
         // Here we construct our URL
-        var queryURL = "https://api.edamam.com/search?q=" + ingredient + "&app_id=" + appId + "&app_key=" + appKey + "&from=0&to=3";
+        var queryURL = "https://api.edamam.com/search?q=" + ingredient + "&app_id=" + appId + "&app_key=" + appKey + "&from=0&to=12";
 
-        
         $.ajax ({
           url: queryURL,
           method: "GET"
         }).done(function(response) {
-
+          var deckNumber = 0; 
           for(var x = 0; x < response.hits.length; x++) {
-
-              console.log(response);
            
-        
-
-              // Retrieves the recipe image
-        var recipe_img = response.hits[x].recipe.image; 
-
-              console.log(recipe_img);
-
-              //Retrieve recipe title
-        var recipe_title =  response.hits[x].recipe.label; 
-
-              console.log(recipe_title);
-
-               var recipe_instr = response.hits[x].recipe.uri;
-
-              console.log(recipe_instr);
-
-
-              //Placing results in DOM
+            //declare a deck number 
+            //...and append it to the id of our current deck every 4 items:
+            //use modulus (remainder operator) limit each deck to 4
+            if (x % 4 == 0 ) {
+              var cardDeck = $("<div class='card-deck row'" + " id='deck-" + deckNumber + "'" + "></div>");
+              $("#search-results").append(cardDeck);
+              deckNumber++;
+            } 
             
+            // Retrieves the recipe image
+            var recipe_img = response.hits[x].recipe.image; 
+            
+            //Retrieve recipe title
+            var recipe_title =  response.hits[x].recipe.label; 
+            
+            //Recipe instruction link
+            var recipe_instr = response.hits[x].recipe.uri;
+            
+            //Placing results in DOM
             // Creates a div to hold the recipe
-              var newdiv = $('<div class="card-deck">'+'<div class="card results" >'+'<img class="card-img-top" src=' + recipe_img+' alt="Card image cap">' +'<div class="card-body">' + '<h5 class="card-title">'+recipe_title+'</h5>'+'</div>' );
-              
-              
-          // Puts the entire Movie above the previous movies.
-              $("#search-results").append(newdiv); 
+            var recipeCard = $('<div class="card results col-sm-3 col-lg-3 col-md-3" >'+
+                                  '<img class="card-img-top" src=' + recipe_img + ' alt="Card image cap">'
+                                 +'<div class="card-body">' + 
+                                    '<h5 class="card-title">' + recipe_title + '</h5>' + 
+                                  '</div>' + 
+                                '</div>');
+           
+            $("#deck-" + deckNumber).append(recipeCard); 
             
+          }
 
-              
-
-            
-            }
+          /*  $(".card-deck").click(function() {
+              console.log(this.recipe_title); 
+            })*/
         })
- });
-/*$("").on("click", function(event) {
-  event.preventDefault();
-  var ingredient_1 = $("").val().trim();
-  var ingredient_2 = $("").val().trim();
-  var ingredient_3 = $("").val().trim();
-  var ingredient_4 = $("").val().trim();
-  var ingredient_5 = $("").val().trim();
 
-  searchRecipes(ingredient_1, ingredient_2, ingredient_3, ingredient_4, ingredient_5);
-});
-
-
-  // Initialize Firebase
-    var config = {
-    apiKey: "AIzaSyC8tE8l_DBoyPfFaiRc5fYfZ6jBK9XrcSs",
-    authDomain: "groupproject-1b84f.firebaseapp.com",
-    databaseURL: "https://groupproject-1b84f.firebaseio.com",
-    projectId: "groupproject-1b84f",
-    storageBucket: "",
-    messagingSenderId: "208222818748"
-  };
-  firebase.initializeApp(config);
-
-  var database = firebase.database();
-
-  $("").on("click", function(event) {
-    event.preventDefault();
-    var ingredient_1 = $("#employee-name-input").val().trim();
-    var ingredient_2 = $("").val().trim();
-    var ingredient_3 = $("").val().trim();
-    var ingredient_4 = $("").val().trim();
-    var ingredient_5 = $("").val().trim();
-
-    var ingredients = {
-      ingredient_1: ingredient_1,
-      ingredient_2: ingredient_2,
-      ingredient_3: ingredient_3,
-      ingredient_4: ingredient_4,
-      ingredient_5: ingredient_5
-    };
-
-
-    database.ref().push(ingredients);
-
-    console.log(ingredients.ingredient_1);
-    console.log(ingredients.ingredient_2);
-    console.log(ingredients.ingredient_3);
-    console.log(ingredients.ingredient_4);
-    console.log(ingredients.ingredient_5);
-
-
-    });
-
-    dataRef.ref().on("child_added", function(childSnapshot) {
-
-      // Log everything that's coming out of snapshot
-      console.log(childSnapshot.val().ingredient_1);
-      console.log(childSnapshot.val().ingredient_2);
-      console.log(childSnapshot.val().ingredient_3);
-      console.log(childSnapshot.val().ingredient_4);
-      console.log(childSnapshot.val().ingredient_5);
-
-    // Handle the errors
-    }, function(errorObject) {
-      console.log("Errors handled: " + errorObject.code);
-    });
-
-    var favRecipe = function() {
-      $.ajax({
-        // xhrFields: {cors: false},
-        url: queryURL,
-        method: "GET"
-      }).done(function(response) {
-        console.log(response);
-        var x = (JSON.stringify(response));
-        var y = response;
-        localStorage.setItem('ourData', JSON.stringify(response));
       });
+<<<<<<< HEAD
       var retrData = JSON.parse(localStorage.getItem('ourData'));
       var carbData = JSON.stringify(retrData.hits[0].recipe.totalDaily.CHOCDF.quantity);
       localStorage.setItem('carbDataLS', JSON.stringify(retrData.hits[0].recipe.totalDaily.PROCNT.quantity));
@@ -339,4 +264,8 @@ $("#findIngr").on("click", function(event) {
 
     }
 */
+>>>>>>> na-0118
+=======
+         
+    
 >>>>>>> na-0118
