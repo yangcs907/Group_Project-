@@ -40,7 +40,7 @@
             var recipe_title =  response.hits[x].recipe.label; 
             
             //Recipe instruction link
-            var recipe_instr = response.hits[x].recipe.uri;
+            var recipe_instr = response.hits[x].recipe.url;
             
             //Placing results in DOM
             // Creates a div to hold the recipe
@@ -55,9 +55,9 @@
             
           }
 
-          /*  $(".card-deck").click(function() {
-              console.log(this.recipe_title); 
-            })*/
+            $(".card.results").click(function() {
+              console.log(recipe_title); 
+            })
         })
 
       });
