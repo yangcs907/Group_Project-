@@ -1,6 +1,6 @@
 /*Motion Background*/
 video {
-	
+
 	position: fixed;
     min-width: 100%;
     min-height: 100%;
@@ -12,14 +12,14 @@ video {
 
 /*Navigation Bar*/
 nav {
-	
+
 	color: #996633;
 	font-family: 'Redressed', cursive;
 	display: flex;
 	letter-spacing: 2px;
 	background: white;
-	opacity: 0.8; 
-} 
+	opacity: 0.8;
+}
 
 h2 {
 	margin-right: 150px;
@@ -28,7 +28,7 @@ h2 {
 
 /*Logo*/
 .fa-cutlery {
-    
+
     padding: 5px 10px;
     display: inline-block;
     -moz-border-radius: 100px;
@@ -42,26 +42,26 @@ h2 {
 .fa {
 
 	color: #33cc33;
-	margin-top: 5px; 
+	margin-top: 5px;
 }
 
 
 #main-screen {
 
 	text-align: center;
-	font-size: 20px; 
-	color: white;  
-	width: 100%; 
+	font-size: 20px;
+	color: white;
+	width: 100%;
 	margin: 80px;
 	margin-top: 40px;
-	opacity: 0.8; 
+	opacity: 0.8;
 }
 
 
- #quote {
-	
+#quote {
+
 	margin-bottom: 50px;
-	
+
 }
 
 #ingred-search {
@@ -73,16 +73,15 @@ h2 {
 .card-deck {
 
 	margin-bottom: 50px;
-	height: 40%;
-	
 
 }
 
-.card-img-top {
+ .card-img-top {
 
 	height: 20rem;
 
-}
+} 
+
 
 
 #recipe, #media {
@@ -90,8 +89,3 @@ h2 {
 	color: brown;
 	margin-bottom: 50px;
 }
-
-
-
-
-
