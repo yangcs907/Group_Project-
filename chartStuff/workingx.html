@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>Edamam API Query to Chart.JS Testing</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="Chart.bundle.min.js"></script>
+  <script src="xwx.js"></script>
+  
+</head>
+
+<body>
+  <div class="container">
+    <h1>Edamam API Query to Chart.JS Testing</h1>
+
+    <!-- We'll be dumping our JSON contents in here -->
+    <div id="foodDiv"></div>
+
+    <!-- This form will be where users input data about the movies -->
+    <form id="searchForm">
+      <label for="ingr-input">search</label>
+      <input type="text" id="ingr-input"><br>
+
+      <!-- This button will trigger our AJAX call -->
+      <input id="findIngr" type="submit" value="ingredient search">
+    </form>
+
+    <div id="thisHere"></div>
+
+    <canvas id="nutrChart" width="90%" height="30%">
+    </canvas>
+
+    <!-- <div id="dynamicChart"></div> -->
+    
+  </div>
+
+</body>
+
+</html>
