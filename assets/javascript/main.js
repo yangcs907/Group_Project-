@@ -36,6 +36,8 @@ $(document).ready(function() {
         addData (theChart, ourLabels[i], newestData[i]);
       };
 
+      theChart.update ();
+
     };
 
     function saveLocal(resp) {
