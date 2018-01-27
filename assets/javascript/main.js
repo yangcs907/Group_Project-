@@ -1,4 +1,3 @@
-
 // This .on("click") function will trigger the AJAX Call
       $("#findIngr").on("click", function(event) {
 
@@ -11,14 +10,11 @@
         // Here we grab the text from the input box
         var ingredient = $("#ingr-input").val().trim();
 
+        var appId = "97c197ed"
 
-        var appId = "36c66d3a"
+        var appId = "97c197ed"
 
-        
-        var appId = "36c66d3a"
-        
-
-        var appKey = "8be8dd8b6a6f98a5221770fcb1d2f043"
+        var appKey = "aa12d0ea0c17db69fe3f06f54c527393"
 
         // Here we construct our URL
         var queryURL = "https://api.edamam.com/search?q=" + ingredient + "&app_id=" + appId + "&app_key=" + appKey + "&from=0&to=12";
@@ -32,10 +28,10 @@
           for(var x = 0; x < response.hits.length; x++) {
 
             //declare a deck number
-          var deckNumber = 0; 
+          var deckNumber = 0;
           for(var x = 0; x < response.hits.length; x++) {
-           
-            //declare a deck number 
+
+            //declare a deck number
             //...and append it to the id of our current deck every 4 items:
             //use modulus (remainder operator) limit each deck to 4
             if (x % 4 == 0 ) {
@@ -64,14 +60,14 @@
 
             $("#deck-" + deckNumber).append(recipeCard);
 
-            } 
-            
+            }
+
             // Retrieves the recipe image
-            var recipe_img = response.hits[x].recipe.image; 
-            
+            var recipe_img = response.hits[x].recipe.image;
+
             //Retrieve recipe title
-            var recipe_title =  response.hits[x].recipe.label; 
-            
+            var recipe_title =  response.hits[x].recipe.label;
+
             //Recipe instruction link
             var recipe_instr = response.hits[x].recipe.url;
 
@@ -80,14 +76,14 @@
             // Creates a div to hold the recipe
             var recipeCard = $('<a href="+ recipe_instr +"+ target="_blank" <div class="card results col-sm-3 col-lg-3 col-md-3" >'+
                                   '<img class="card-img-top" src=' + recipe_img + ' alt="Card image cap">'
-                                 +'<div class="card-body">' + 
-                                    '<h5 class="card-title">' + recipe_title + '</h5>' + 
-                                  '</div>' + 
+                                 +'<div class="card-body">' +
+                                    '<h5 class="card-title">' + recipe_title + '</h5>' +
+                                  '</div>' +
                                 '</div>' + '</a>');
             window.open(recipeCard,'_blank');
-           
-            $("#deck-" + deckNumber).append(recipeCard); 
-            
+
+            $("#deck-" + deckNumber).append(recipeCard);
+
             //Add the src attr for recipe instructions url on each card
              recipeCard.attr('src', recipe_instr);
              recipeCard.attr('target','_blank');
@@ -99,21 +95,13 @@
                   var recipe_location = $(this).attr('src');
 
                    console.log(recipe_location);
-              
+
                   var recipe_location = $(this).attr('src');
-             
-                   console.log(recipe_location); 
 
-
-
-
-
-            })
-          }
-
-
-        })
-
+                   console.log(recipe_location);
+                 });
+            };
+        });
       });
 // Firebase code to work with html modal
       var config = {
@@ -157,10 +145,3 @@
       console.log(userFeedback);
       $(".modal fade").hide();
       });
-          
-           
-       /* })*/
-
-     /* });*/
-         
-    
