@@ -103,6 +103,8 @@
             };
         });
       });
+
+
 // Firebase code to work with html modal
       var config = {
         apiKey: "AIzaSyC8tE8l_DBoyPfFaiRc5fYfZ6jBK9XrcSs",
