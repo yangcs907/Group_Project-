@@ -7,6 +7,9 @@
         // Here, it prevents the submit button from trying to submit a form when clicked
         event.preventDefault();
 
+        $('#search-results').empty(); 
+
+
         // Here we grab the text from the input box
         var ingredient = $("#ingr-input").val().trim();
 
@@ -96,9 +99,9 @@
 
                    console.log(recipe_location);
 
-                  var recipe_location = $(this).attr('src');
+                  /*var recipe_location = $(this).attr('src');
 
-                   console.log(recipe_location);
+                   console.log(recipe_location);*/
                  });
             };
         });
