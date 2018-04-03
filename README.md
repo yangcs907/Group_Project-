@@ -6,10 +6,10 @@ Have you ever had random ingredients at home and felt too lazy to make a grocery
 
 ## Authors
 
-Nadia Abby https://github.com/Nadia27
-Chris Yang https://github.com/yangcs907
-Tyler Hunt https://github.com/tylerhunter06
-Shane Scott https://github.com/bamacanuck
++ Nadia Abby https://github.com/Nadia27
++ Chris Yang https://github.com/yangcs907
++ Tyler Hunt https://github.com/tylerhunter06
++ Shane Scott https://github.com/bamacanuck
 
 ## Built With
 
